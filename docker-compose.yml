@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # 1. Microservicio de Telemetría (.NET)
+  telemetry-service:
+    build:
+      context: ./services/telemetry-service/TelemetryService
+      dockerfile: ../Dockerfile
+    container_name: ops-sentinel-telemetry
+    ports:
+      - "5001:5001"
+    networks:
+      - ops-sentinel-net
+    restart: unless-stopped
+
+  # 2. Agente Autónomo SRE (FastAPI + Python)
+  agent-backend:
+    build:
+      context: ./services/agent-backend
+      dockerfile: Dockerfile
+    container_name: ops-sentinel-agent
+    ports:
+      - "8000:8000"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - TELEMETRY_API_BASE=http://telemetry-service:5001/api/v1/telemetry
+    volumes:
+      - agent-data:/app/data
+    depends_on:
+      - telemetry-service
+    networks:
+      - ops-sentinel-net
+    restart: unless-stopped
+
+  # 3. Interfaz de Usuario Liquid Glass (React + Vite + Nginx)
+  frontend:
+    build:
+      context: ./services/frontend
+      dockerfile: Dockerfile
+    container_name: ops-sentinel-ui
+    ports:
+      - "5173:80"
+    depends_on:
+      - agent-backend
+      - telemetry-service
+    networks:
+      - ops-sentinel-net
+    restart: unless-stopped
+
+volumes:
+  agent-data:
+
+networks:
+  ops-sentinel-net:
+    driver: bridge

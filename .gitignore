@@ -1,0 +1,39 @@
+# Variables de entorno y credenciales (¡CRÍTICO!)
+.env
+*.env
+.env.local
+
+# Bases de datos locales
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+*.egg-info/
+
+# .NET / C#
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Node / Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# SO
+.DS_Store
+Thumbs.db

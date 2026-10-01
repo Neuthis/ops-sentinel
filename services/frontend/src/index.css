@@ -1,0 +1,52 @@
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #070913;
+  color: #F8FAFC;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@keyframes driftPrimary {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(12vw, 10vh, 0) scale(1.15);
+  }
+  100% {
+    transform: translate3d(4vw, 22vh, 0) scale(0.95);
+  }
+}
+
+@keyframes driftSecondary {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-10vw, -12vh, 0) scale(1.18);
+  }
+  100% {
+    transform: translate3d(-18vw, -5vh, 0) scale(0.92);
+  }
+}
+
+@keyframes pulseCore {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.9);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(-6vw, 6vh, 0) scale(1.2);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(8vw, -8vh, 0) scale(1.05);
+    opacity: 0.55;
+  }
+}
