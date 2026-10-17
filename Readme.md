@@ -20,7 +20,7 @@ El sistema monitorea en tiempo real una malla de microservicios (.NET), detecta 
                   ┌──────────────────────────────────────────┐
                   │        Agent Backend (FastAPI)           │
                   │  • Google Gemini SDK (Function Calling)  │
-                  │  • Autonomous Reasoning & Diagnostics   │
+                  │  • Autonomous Reasoning & Diagnostics    │
                   │  • Incident Audit Log (SQLite / SQLA)    │
                   │  • Server-Sent Events (SSE Engine)       │
                   └────────────────────┬─────────────────────┘
